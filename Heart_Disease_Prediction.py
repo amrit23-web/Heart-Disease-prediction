@@ -1,75 +1,26 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# # Importing essential libraries
-
-# In[2]:
-
-
-import pandas as pd                               #for data manipulation
-import matplotlib.pyplot as plt                   #for data visualization
-import seaborn as sns                             #for data visualization
+import pandas as pd                               
+import matplotlib.pyplot as plt             
+import seaborn as sns                          
 import numpy as np
-
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 sns.set_style("whitegrid")
 plt.style.use("fivethirtyeight")
 
-
-# # Loading the dataset
-
-# In[3]:
-
-
 data=pd.read_csv("heart.csv")
-
-
-# # Returns number of rows and columns of the dataset
-
-# In[4]:
-
 
 print(data.shape)
 
-
-# # Returns the first x number of rows when head(x). Without a number it returns 5
-
-# In[5]:
-
-
 data.head()
 
-
-# # Returns the last x number of rows when tail(x). Without a number it returns 5
-
-# In[6]:
-
-
 data.tail()
-
-
-# # Returns basic statistics
-
-# In[7]:
-
 
 pd.set_option("display.float", "{:.2f}".format)
 data.describe()
 
 
-# # Checking for missing values
-
-# In[8]:
-
-
 data.isna().sum()
-
-
-# # Number of male and female Patient in Dataset
-
-# In[9]:
-
 
 count_Male = len(data[data.sex == 1])
 count_Female = len(data[data.sex == 0])
@@ -79,19 +30,11 @@ print("\nTotal Number of Female Patients = ",count_Female)
 print("\nPercentage of Female Patients = {:.2f}%".format((count_Female)/(len(data.sex))*100))
 
 
-# In[10]:
-
-
 plt.figure(figsize=(10,8))
 sns.countplot(x='sex', data=data, palette='Set1')
 plt.xticks(ticks=[1, 0], labels = ["Male", "Female"])
 plt.title("No. of Males and Females present in the dataset", size=15)
 plt.show()
-
-
-# # Total Number of Patient having or have not heart disease in Dataset
-
-# In[11]:
 
 
 m=0
@@ -116,17 +59,11 @@ print("\nTotal Number of Patients have not Heart Diseases = ",count_nodisease)
 print("\nPercentage of Patients Haven't Heart Disease = {:.2f}%".format((count_nodisease / (len(data.target))*100)))
 
 
-# In[12]:
-
-
 plt.figure(figsize=(10,8))
 sns.countplot(x='target', data=data, palette='Set1')
 plt.xticks(ticks=[1, 0], labels = ["Have Heart Disease", "No Heart Disease"])
 plt.title("No. of Patient in the dataset", size=15)
 plt.show()
-
-
-# In[13]:
 
 
 labels = ['Yes', 'No']
@@ -142,15 +79,6 @@ plt.pie(data_gender.values, labels = ["Female, No_Heart_disease", "Female, With_
 plt.show()
 
 
-# We can see that, the dataset contains 14 columns 5 of them are numerical values and 9 of them are categorical values. 
-# We can see also there are no missing values in this dataset. As for the data balancing, the data is relatively balanced, 
-# 54% of the persons in the dataset have heart disease.
-
-# # Univariate Selection For categorical Variable and continous Variable
-
-# In[14]:
-
-
 categorical_val = []
 continous_val = []
 for column in data.columns:
@@ -160,16 +88,9 @@ for column in data.columns:
         continous_val.append(column)
 
 
-# In[15]:
-
 
 print("Categorical Values are = ",categorical_val)
 print("Continous Values are = ",continous_val)
-
-
-# # Plotting categorical_value histogram for the dataset
-
-# In[16]:
 
 
 plt.figure(figsize=(15, 15))
@@ -182,24 +103,6 @@ for i, column in enumerate(categorical_val, 1):
     plt.xlabel(column)
 
 
-# # Observations from the above plot
-# 1. cp {Chest pain}: People with cp 1, 2, 3 are more likely to have heart disease than people with cp 0.
-# 2. restecg {resting EKG results}: People with a value of 1 (reporting an abnormal heart rhythm, which 
-#                  can range from mild symptoms to severe problems) are more likely to have heart disease.
-# 3.exang {exercise-induced angina}: people with a value of 0 (No ==> angina induced by exercise) have 
-#                  more heart disease than people with a value of 1 (Yes ==> angina induced by exercise)
-# 4. slope {the slope of the ST segment of peak exercise}: People with a slope value of 2 
-#                  (Downslopins: signs of an unhealthy heart) are more likely to have heart disease than
-#                  people with a slope value of 2 slope is 0 (Upsloping: best heart rate with exercise) 
-#                  or 1 (Flatsloping: minimal change (typical healthy heart)).
-# 5. ca {number of major vessels (0-3) stained by fluoroscopy}: the more blood movement the better, so 
-#                  people with ca equal to 0 are more likely to have heart disease.
-# 6. thal {thalium stress result}: People with a thal value of 2 (defect corrected: once was a defect 
-#                  but ok now) are more likely to have heart disease.
-# # Plotting continous_value histogram for the dataset
-
-# In[17]:
-
 
 plt.figure(figsize=(15, 15))
 
@@ -210,16 +113,6 @@ for i, column in enumerate(continous_val, 1):
     plt.legend()
     plt.xlabel(column)
 
-
-# # # Observations from the above plot
-# 1. trestbps: resting blood pressure anything above 130-140 is generally of concern
-# 2. chol: greater than 200 is of concern.
-# 3. thalach: People with a maximum of over 140 are more likely to have heart disease.
-# 4. the old peak of exercise-induced ST depression vs. rest looks at heart stress during 
-#             exercise an unhealthy heart will stress more.
-# # Creating Another Plotting Figure
-
-# In[18]:
 
 
 # Create another figure
@@ -242,11 +135,6 @@ plt.ylabel("Max Heart Rate")
 plt.legend(["Disease", "No Disease"]);
 
 
-# # FEATURE SELECTION  with correlation matrix
-
-# In[19]:
-
-
 corr_matrix = data.corr()
 fig, ax = plt.subplots(figsize=(15, 15))
 ax = sns.heatmap(corr_matrix,
@@ -258,12 +146,6 @@ bottom, top = ax.get_ylim()
 ax.set_ylim(bottom + 0.5, top - 0.5)
 
 
-# # Data Processing
-# After exploring the dataset, we can observe that we need to convert some categorical variables to dummy variables and scale all 
-# continous values before training the machine learning models.
-# In[20]:
-
-
 categorical_val.remove('target')
 dataset = pd.get_dummies(data, columns = categorical_val)
 
@@ -271,12 +153,6 @@ from sklearn.preprocessing import StandardScaler
 
 sc = StandardScaler()
 dataset[continous_val] = sc.fit_transform(dataset[continous_val])
-
-
-# # Splitting the Data into Training Data and Test Data
-
-# In[21]:
-
 
 from sklearn.model_selection import train_test_split
 
@@ -288,11 +164,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random
 print("Training features have {0} records and Testing features have {1} records.".      format(X_train.shape[0], X_test.shape[0]))
 
 
-# # Using GridSearchCV to find the best algorithm for this problem
-
-# In[22]:
-
-
 from sklearn.model_selection import GridSearchCV                              
 from sklearn.model_selection import ShuffleSplit
 from sklearn.linear_model import LogisticRegression
@@ -300,10 +171,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 
-
-# # Creating a function to calculate best model for this problem
-
-# In[23]:
 
 
 def find_best_model(X, y):
@@ -356,10 +223,6 @@ def find_best_model(X, y):
 find_best_model(X_train, y_train)
 
 
-# # Since the Logistic Regression Model has the highest accuracy, we futher fine tune the model using hyperparameter optimization
-
-# In[24]:
-
 
 # Using cross_val_score for gaining average accuracy
 from sklearn.model_selection import cross_val_score
@@ -367,9 +230,6 @@ scores = cross_val_score(RandomForestClassifier(n_estimators=20, random_state=0)
 print('Average Accuracy : {}%'.format(round(sum(scores)*100/len(scores)), 3))
 
 
-# # Printing the classification report of the performance of the machine learning model
-
-# In[25]:
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
@@ -396,11 +256,6 @@ def print_score(clf, X_train, y_train, X_test, y_test, train=True):
         print(f"Confusion Matrix: \n {confusion_matrix(y_test, pred)}\n")
 
 
-# # Creating Logistic Regression Model
-
-# In[26]:
-
-
 from sklearn.linear_model import LogisticRegression
 
 lr_clf = LogisticRegression(solver="liblinear")
@@ -411,10 +266,6 @@ print_score(lr_clf, X_train, y_train, X_test, y_test, train=False)
 print("Test set score: {:.3f}".format(lr_clf.score(X_test, y_test)))
 
 
-# # Accuracy Score
-
-# In[27]:
-
 
 test_score = accuracy_score(y_test, lr_clf.predict(X_test)) * 100
 train_score = accuracy_score(y_train, lr_clf.predict(X_train)) * 100
@@ -422,11 +273,6 @@ train_score = accuracy_score(y_train, lr_clf.predict(X_train)) * 100
 results_df = pd.DataFrame(data=[["Logistic Regression", train_score, test_score]], 
                           columns=['Model', 'Training Accuracy %', 'Testing Accuracy %'])
 results_df
-
-
-# # Prediction from User input
-
-# In[28]:
 
 
 # Taking the input from user 64,1,3,110,211,0,0,144,1,1.8,1,0,2,
@@ -447,13 +293,8 @@ input_data=(int(input("\nAge\n\n")),
             )
 
 
-# In[31]:
-
-
 input_data_as_numpy_array=np.asarray(input_data)
 
-
-# In[32]:
 
 
 input_data_reshaped=input_data_as_numpy_array.reshape(1,-1)
@@ -463,9 +304,6 @@ if(prediction[0]==0):
     print("\nThis person's heart is healthy 💛💛💛💛")
 else:
     print("\nThis person is suffering from heart disease 💔💔💔💔")
-
-
-# In[ ]:
 
 
 
