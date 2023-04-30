@@ -259,8 +259,8 @@ ax.set_ylim(bottom + 0.5, top - 0.5)
 
 
 # # Data Processing
-After exploring the dataset, we can observe that we need to convert some categorical variables to dummy variables and scale all 
-continous values before training the machine learning models.
+# After exploring the dataset, we can observe that we need to convert some categorical variables to dummy variables and scale all 
+# continous values before training the machine learning models.
 # In[20]:
 
 
