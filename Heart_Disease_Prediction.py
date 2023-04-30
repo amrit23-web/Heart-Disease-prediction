@@ -183,19 +183,19 @@ for i, column in enumerate(categorical_val, 1):
 
 
 # # Observations from the above plot
-1. cp {Chest pain}: People with cp 1, 2, 3 are more likely to have heart disease than people with cp 0.
-2. restecg {resting EKG results}: People with a value of 1 (reporting an abnormal heart rhythm, which 
-                 can range from mild symptoms to severe problems) are more likely to have heart disease.
-3.exang {exercise-induced angina}: people with a value of 0 (No ==> angina induced by exercise) have 
-                 more heart disease than people with a value of 1 (Yes ==> angina induced by exercise)
-4. slope {the slope of the ST segment of peak exercise}: People with a slope value of 2 
-                 (Downslopins: signs of an unhealthy heart) are more likely to have heart disease than
-                 people with a slope value of 2 slope is 0 (Upsloping: best heart rate with exercise) 
-                 or 1 (Flatsloping: minimal change (typical healthy heart)).
-5. ca {number of major vessels (0-3) stained by fluoroscopy}: the more blood movement the better, so 
-                 people with ca equal to 0 are more likely to have heart disease.
-6. thal {thalium stress result}: People with a thal value of 2 (defect corrected: once was a defect 
-                 but ok now) are more likely to have heart disease.
+# 1. cp {Chest pain}: People with cp 1, 2, 3 are more likely to have heart disease than people with cp 0.
+# 2. restecg {resting EKG results}: People with a value of 1 (reporting an abnormal heart rhythm, which 
+#                  can range from mild symptoms to severe problems) are more likely to have heart disease.
+# 3.exang {exercise-induced angina}: people with a value of 0 (No ==> angina induced by exercise) have 
+#                  more heart disease than people with a value of 1 (Yes ==> angina induced by exercise)
+# 4. slope {the slope of the ST segment of peak exercise}: People with a slope value of 2 
+#                  (Downslopins: signs of an unhealthy heart) are more likely to have heart disease than
+#                  people with a slope value of 2 slope is 0 (Upsloping: best heart rate with exercise) 
+#                  or 1 (Flatsloping: minimal change (typical healthy heart)).
+# 5. ca {number of major vessels (0-3) stained by fluoroscopy}: the more blood movement the better, so 
+#                  people with ca equal to 0 are more likely to have heart disease.
+# 6. thal {thalium stress result}: People with a thal value of 2 (defect corrected: once was a defect 
+#                  but ok now) are more likely to have heart disease.
 # # Plotting continous_value histogram for the dataset
 
 # In[17]:
@@ -211,12 +211,12 @@ for i, column in enumerate(continous_val, 1):
     plt.xlabel(column)
 
 
-# # Observations from the above plot
-1. trestbps: resting blood pressure anything above 130-140 is generally of concern
-2. chol: greater than 200 is of concern.
-3. thalach: People with a maximum of over 140 are more likely to have heart disease.
-4. the old peak of exercise-induced ST depression vs. rest looks at heart stress during 
-            exercise an unhealthy heart will stress more.
+# # # Observations from the above plot
+# 1. trestbps: resting blood pressure anything above 130-140 is generally of concern
+# 2. chol: greater than 200 is of concern.
+# 3. thalach: People with a maximum of over 140 are more likely to have heart disease.
+# 4. the old peak of exercise-induced ST depression vs. rest looks at heart stress during 
+#             exercise an unhealthy heart will stress more.
 # # Creating Another Plotting Figure
 
 # In[18]:
