@@ -4,7 +4,7 @@ import pickle
 
 # Load the pickled model
 with open('trained_model.sav', 'rb') as f:
-    loaded_model = pickle.load(f, protocol=4)
+    loaded_model = pickle.load(f)
 
 # Create a function to make predictions
 def predict_chd(age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal):
