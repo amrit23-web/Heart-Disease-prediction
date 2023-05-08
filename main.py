@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 # Load the trained model
-loaded_model = pickle.load(open('trained_model.sav','rb'))
+loaded_model = pickle.load(open('Heart_Disease_Prediction.ipynb/trained_model.sav','rb'))
 
 # Define the web interface
 def main():
