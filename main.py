@@ -2,8 +2,16 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Load the trained model
-loaded_model = pickle.load(open('Heart_Disease_Prediction.ipynb/trained_model.sav','rb'))
+# Load the model
+with open('trained_model.sav', 'rb') as f:
+    loaded_model = pickle.load(f)
+
+# Make predictions
+prediction = loaded_model.predict(input_data)
+
+# Display the predictions
+st.write(prediction)
+
 
 # Define the web interface
 def main():
