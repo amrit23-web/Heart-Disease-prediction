@@ -1,9 +1,9 @@
 import streamlit as st
-import joblib
+import pickle
 import numpy as np
 
 # Load the trained model
-model = joblib.load('model.joblib')
+loaded_model = pickle.load(open('trained_model.sav','rb'))
 
 # Define the web interface
 def main():
