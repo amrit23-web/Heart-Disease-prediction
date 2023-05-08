@@ -3,11 +3,8 @@ import pandas as pd
 import pickle
 
 # Load the pickled model
-import joblib
-
-# Load the trained model
-loaded_model = joblib.load('trained_model.sav')
-
+with open('trained_model.sav', 'rb') as f:
+    loaded_model = pickle.load(f)
 
 # Create a function to make predictions
 def predict_chd(age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal):
