@@ -1,4 +1,4 @@
-import pickle
+import joblib
 from sklearn.ensemble import RandomForestClassifier
 
 # Load the data and split into features and target
@@ -10,6 +10,5 @@ y = data['target']
 model = RandomForestClassifier()
 model.fit(X, y)
 
-# Pickle the model and save it to disk
-with open('trained_model.sav', 'wb') as f:
-    pickle.dump(model, f)
+# Save the model to disk
+joblib.dump(model, 'trained_model.sav')
