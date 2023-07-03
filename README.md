@@ -1,5 +1,4 @@
 # Heart-Disease-prediction
-# Heart Disease Prediction
 
 This project aims to predict the likelihood of heart disease based on various input features. It utilizes a trained machine learning model to make predictions.
 
